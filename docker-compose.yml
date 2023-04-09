@@ -1,0 +1,35 @@
+version: '1'
+
+services:
+    flask-app:
+        container_name: flask-app
+        build: app
+        restart: always
+        ports:
+            - '5000:5000'
+        volumes:
+            - ./app:/app
+        networks:
+            - backend
+
+    mysql-db:
+        container_name: mysql-db
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: school
+        ports:
+            - '3308:3306'
+        volumes:
+            - ./database/school_db.sql:/docker-entrypoint-initdb.d/school_db.sql
+        networks:
+            - backend
+
+networks:
+    backend:
+
+volumes:
+    app:
+    database:

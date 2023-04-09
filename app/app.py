@@ -47,6 +47,7 @@ def create_course():
                 conn.connection.commit() #confirm action insert
                 return jsonify({'message': 'Materia registrada'})
         except Exception as ex:
+            print("test")
             return jsonify({'message': 'Error: No se pudo crear la materia.'})
     else:
         return jsonify({'message': "Parámetros inválidos..."})
@@ -119,4 +120,4 @@ def page_not_found(error):
 if __name__ == '__main__':
     app.config.from_object(config['development'])
     app.register_error_handler(404, page_not_found)
-    app.run()
+    app.run(host='0.0.0.0')
