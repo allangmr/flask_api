@@ -14,8 +14,8 @@
 
 
 -- Dumping database structure for school
-CREATE DATABASE IF NOT EXISTS `school` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci */;
-USE `school`;
+CREATE DATABASE IF NOT EXISTS `clinic` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci */;
+USE `clinic`;
 
 -- Dumping structure for table school.courses
 CREATE TABLE IF NOT EXISTS `courses` (
@@ -41,10 +41,18 @@ INSERT INTO `courses` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 
 -- Dumping structure for table school.students
-CREATE TABLE IF NOT EXISTS `students` (
+CREATE TABLE IF NOT EXISTS `pacientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` tinytext COLLATE utf8mb4_spanish_ci NOT NULL,
-  `grade` int(11) NOT NULL DEFAULT '0',
+  `telefono` int(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+-- Dumping structure for table school.students
+CREATE TABLE IF NOT EXISTS `doctores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` tinytext COLLATE utf8mb4_spanish_ci NOT NULL,
+  `telefono` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
